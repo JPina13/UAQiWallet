@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "786523805136",
+    "project_id": "uaqiwallet",
+    "storage_bucket": "uaqiwallet.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:786523805136:android:49f453b5c6c0784c9c95d5",
+        "android_client_info": {
+          "package_name": "com.example.auqiwallet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "786523805136-kfp80hbehem7b7to2hdk6cjn34d4h764.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPmDm4A8R1AK2VwsGPNwmh1o2lF9SajJo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "786523805136-kfp80hbehem7b7to2hdk6cjn34d4h764.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:786523805136:android:f3868b0df80d6d569c95d5",
+        "android_client_info": {
+          "package_name": "com.example.uaqwallet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "786523805136-kfp80hbehem7b7to2hdk6cjn34d4h764.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPmDm4A8R1AK2VwsGPNwmh1o2lF9SajJo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "786523805136-kfp80hbehem7b7to2hdk6cjn34d4h764.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
