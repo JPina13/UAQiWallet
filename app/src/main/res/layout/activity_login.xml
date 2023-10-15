@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/fondo_degradado"
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:padding="15dp"
@@ -9,32 +10,24 @@
     android:layout_height="match_parent"
     tools:context=".Login">
 
-    <TextView
-        android:id="@+id/LogoIni"
+    <ImageView
+        android:id="@+id/logoPr"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="UAQiWallet"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display3" />
-
+        android:layout_height="63dp"
+        android:scaleType="centerInside"
+        app:srcCompat="@drawable/logo1"
+        tools:visibility="visible" />
     <Space
         android:layout_width="match_parent"
         android:layout_height="40dp" />
 
-    <TextView
-        android:text="@string/login"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:layout_marginBottom="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/email"
+            android:textColor="@color/white"
             android:hint="@string/email_correo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
@@ -46,6 +39,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/password"
+            android:textColor="@color/white"
             android:hint="@string/contrase_a"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
@@ -59,23 +53,31 @@
 
     <Space
         android:layout_width="match_parent"
+        android:background="@color/Color1"
         android:layout_height="34dp" />
 
     <Button
         android:id="@+id/btn_login"
-        android:text="@string/iniciar"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/Color1"
+        android:text="@string/iniciar" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="100dp" />
 
     <TextView
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:gravity="center"
-        android:layout_marginTop="20dp"
         android:id="@+id/registrar"
-        android:text="@string/registrate_ahora"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
+        android:layout_height="37dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="@string/registrate_ahora"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="italic" />
+
 
 </LinearLayout>

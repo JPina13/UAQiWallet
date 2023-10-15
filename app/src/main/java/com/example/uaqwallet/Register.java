@@ -25,6 +25,7 @@ import com.google.firebase.ktx.Firebase;
 
 public class Register extends AppCompatActivity {
 
+    //Creamos las variables y los componentes que corresponden
     TextInputEditText editTextEmail, editTextPassword;
     Button buttonReg;
     FirebaseAuth mAuth;
@@ -33,7 +34,7 @@ public class Register extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
+        // Revisar si el usuario tiene la sesion abierta
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
@@ -45,6 +46,8 @@ public class Register extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //Instanciar nuestrar variables con nuestros componentes y sus ID's
         setContentView(R.layout.activity_register);
         mAuth = FirebaseAuth.getInstance();
         ProgressBar progressBar;
@@ -55,46 +58,57 @@ public class Register extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBarRe);
         textView = findViewById(R.id.iniciarSe);
 
+        //Oyente de accion para la palabra inicia sesion
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Llamamos a la activity de Login y cerramos esta.
                 Intent intent = new Intent(getApplicationContext(),Login.class);
                 startActivity(intent);
                 finish();
             }
         });
 
+        //Oyente de accion para el boton de "Registrar"
         buttonReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                progressBar.setVisibility(view.VISIBLE);
+
                 String email, password;
 
+                //Optenemos los datos del usuario que ingreso en los editText
                 email = String.valueOf(editTextEmail.getText());
                 password = String.valueOf(editTextPassword.getText());
 
+                //Evitamos que esten vacios los campos
                 if (TextUtils.isEmpty(email)){
                     Toast.makeText(Register.this,"Ingresa un correo", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
                 if (TextUtils.isEmpty(password)){
                     Toast.makeText(Register.this,"Ingresa una contraseña", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
+                //Mostramos la barra de progreso
+                progressBar.setVisibility(view.VISIBLE);
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------
+                //Mandamos los datos a la base de datos para poder iniciar sesion despues
                 mAuth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 progressBar.setVisibility(view.GONE);
                                 if (task.isSuccessful()) {
-
+                                    //La cuenta se creo de manera correcta
                                     Toast.makeText(Register.this, "Cuenta creada.",
                                             Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(getApplicationContext(),Login.class);
+                                    startActivity(intent);
+                                    finish();
                                 } else {
-                                    // If sign in fails, display a message to the user.
-                                    Toast.makeText(Register.this, "Authentication failed.",
+                                    //La cuenta no se creo de manera correcta.
+                                    Toast.makeText(Register.this, "Error en crear la cuenta.",
                                             Toast.LENGTH_SHORT).show();
                                 }
                             }

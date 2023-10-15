@@ -2,30 +2,36 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/expUser"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo_degradado"
+    android:gravity="center"
     android:orientation="vertical"
     android:padding="15dp"
-    android:gravity="center"
-    android:layout_height="match_parent"
     tools:context=".Register">
 
     <TextView
-        android:text="@string/registrar"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:layout_marginBottom="20dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:text="@string/registrar"
+        android:textColor="@color/Color1"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/emailRe"
-            android:hint="@string/email_correo"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:hint="@string/email_correo"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/white" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -34,36 +40,91 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/passwordRe"
-            android:hint="@string/contrase_a"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:hint="@string/contrase_a"
+            android:inputType="textPassword"
+            android:textColor="@color/white"
+            tools:visibility="visible" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <ProgressBar
         android:id="@+id/progressBarRe"
-        android:visibility="gone"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
 
     <Space
         android:layout_width="match_parent"
         android:layout_height="34dp" />
 
-    <Button
-        android:id="@+id/btn_aceptar"
-        android:text="@string/Aceptar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <TextView
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:gravity="center"
-        android:layout_marginTop="20dp"
-        android:id="@+id/iniciarSe"
-        android:text="@string/inicia_sesi_n"
+    <EditText
+        android:id="@+id/nameUser"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        />
+        android:ems="10"
+        android:hint="Nombre"
+        android:inputType="text"
+        tools:visibility="visible" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="34dp" />
+
+    <EditText
+        android:id="@+id/editTextNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Expediente"
+        android:inputType="number"
+        tools:visibility="visible" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="34dp" />
+
+    <EditText
+        android:id="@+id/facultadUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Facultad"
+        android:inputType="text" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="34dp" />
+
+    <EditText
+        android:id="@+id/noTarjeta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="No. de tarjeta"
+        android:inputType="text" />
+
+    <Button
+        android:id="@+id/btn_aceptar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/Color1"
+        android:text="@string/Aceptar"
+        android:textColor="@color/white" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+
+    <TextView
+        android:id="@+id/iniciarSe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="@string/inicia_sesi_n"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="italic" />
 
 </LinearLayout>
