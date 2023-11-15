@@ -24,7 +24,7 @@
         android:id="@+id/logout"
         android:layout_width="wrap_content"
         android:textColor="@color/white"
-        android:backgroundTint="@color/Color1"
+        android:backgroundTint="#8E00FC"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Cerrar sesion" />

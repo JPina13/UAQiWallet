@@ -17,6 +17,20 @@
         android:scaleType="centerInside"
         app:srcCompat="@drawable/logo1"
         tools:visibility="visible" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="100dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Inicia Sesión"
+        android:textColor="#333333"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
     <Space
         android:layout_width="match_parent"
         android:layout_height="40dp" />
@@ -27,10 +41,11 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/email"
-            android:textColor="@color/white"
-            android:hint="@string/email_correo"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:hint="@string/email_correo"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/black" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -39,10 +54,11 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/password"
-            android:textColor="@color/white"
-            android:hint="@string/contrase_a"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:hint="@string/contrase_a"
+            android:inputType="textPassword"
+            android:textColor="@color/black" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <ProgressBar
@@ -60,9 +76,10 @@
         android:id="@+id/btn_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:backgroundTint="@color/Color1"
-        android:text="@string/iniciar" />
+        android:layout_marginLeft="100dp"
+        android:backgroundTint="#8E00FC"
+        android:text="@string/iniciar"
+        android:textColor="@color/white" />
 
     <Space
         android:layout_width="match_parent"
@@ -75,8 +92,8 @@
         android:layout_marginTop="20dp"
         android:gravity="center"
         android:text="@string/registrate_ahora"
-        android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textColor="#8D00FB"
+        android:textSize="19sp"
         android:textStyle="italic" />
 
 

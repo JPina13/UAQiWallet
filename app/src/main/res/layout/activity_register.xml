@@ -15,23 +15,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:gravity="center"
+        android:gravity="left"
         android:text="@string/registrar"
-        android:textColor="@color/Color1"
-        android:textSize="25sp"
+        android:textColor="#333333"
+        android:textSize="30sp"
         android:textStyle="bold" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/emailRe"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/email_correo"
             android:inputType="textEmailAddress"
-            android:textColor="@color/white" />
+            android:textColor="@color/black" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -44,7 +43,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/contrase_a"
             android:inputType="textPassword"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             tools:visibility="visible" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -72,7 +71,7 @@
         android:layout_height="34dp" />
 
     <EditText
-        android:id="@+id/editTextNumber"
+        android:id="@+id/exped"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -104,11 +103,16 @@
         android:hint="No. de tarjeta"
         android:inputType="text" />
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="34dp" />
+
     <Button
         android:id="@+id/btn_aceptar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/Color1"
+        android:layout_marginLeft="100dp"
+        android:backgroundTint="#9100FE"
         android:text="@string/Aceptar"
         android:textColor="@color/white" />
 
@@ -123,8 +127,8 @@
         android:layout_marginTop="20dp"
         android:gravity="center"
         android:text="@string/inicia_sesi_n"
-        android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textColor="#8D00FB"
+        android:textSize="19sp"
         android:textStyle="italic" />
 
 </LinearLayout>
