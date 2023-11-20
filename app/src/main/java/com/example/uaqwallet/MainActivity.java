@@ -1,16 +1,20 @@
 package com.example.uaqwallet;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.ktx.Firebase;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,23 +23,27 @@ public class MainActivity extends AppCompatActivity {
     Button button, adeudos;
     TextView textView, nameUser, facuUser, points;
     FirebaseUser user;
+    FirebaseFirestore mfirestore;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mfirestore = FirebaseFirestore.getInstance();
+        CollectionReference collectionReference = mfirestore.collection("user");
 
         //Asignar a las variables los componentes con sus ID's
         auth = FirebaseAuth.getInstance();
         button = findViewById(R.id.logout);
-        //adeudos = findViewById(R.id.adeudos);
+        adeudos = findViewById(R.id.adeudos);
         textView = findViewById(R.id.user_detall);
-        //nameUser = findViewById(R.id.textname);
-        //facuUser = findViewById(R.id.textfacu);
-        //points = findViewById(R.id.textcantPuntos);
+        nameUser = findViewById(R.id.textname);
+        facuUser = findViewById(R.id.textfacu);
+        points = findViewById(R.id.textcantPuntos);
         user = auth.getCurrentUser();
 
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------
         //Comprobar que la sesion este abierta
         if (user == null){
             //Si no lo esta mandamos a la activity de "Login"
@@ -45,6 +53,23 @@ public class MainActivity extends AppCompatActivity {
         }else{
             //Si lo esta obtenemos el correo del usuario ingresado en la base de datos
             textView.setText(user.getEmail());
+
+            //Consultar la base de datos
+            collectionReference.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    if (task.isSuccessful()) {
+                        for (QueryDocumentSnapshot document : task.getResult()) {
+                            String key = document.getId();
+                            nameUser.setText(document.getString("nombre"));
+                            facuUser.setText(document.getString("facultad"));
+                        }
+                    } else {
+                        // Manejar errores
+                    }
+                }
+            });
+
         }
 
         //Oyenye de accion para el boton de cerrar la sesion
