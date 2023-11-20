@@ -16,8 +16,8 @@ public class MainActivity extends AppCompatActivity {
 
     //Crear nuestras variables deacuerdo a los componentes que usamos
     FirebaseAuth auth;
-    Button button;
-    TextView textView;
+    Button button, adeudos;
+    TextView textView, nameUser, facuUser, points;
     FirebaseUser user;
 
 
@@ -29,7 +29,11 @@ public class MainActivity extends AppCompatActivity {
         //Asignar a las variables los componentes con sus ID's
         auth = FirebaseAuth.getInstance();
         button = findViewById(R.id.logout);
+        //adeudos = findViewById(R.id.adeudos);
         textView = findViewById(R.id.user_detall);
+        //nameUser = findViewById(R.id.textname);
+        //facuUser = findViewById(R.id.textfacu);
+        //points = findViewById(R.id.textcantPuntos);
         user = auth.getCurrentUser();
 
         //Comprobar que la sesion este abierta

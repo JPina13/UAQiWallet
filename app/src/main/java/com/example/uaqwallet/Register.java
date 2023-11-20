@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
@@ -55,11 +56,12 @@ public class Register extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mAuth = FirebaseAuth.getInstance();
+        mfirestore = FirebaseFirestore.getInstance();
 
         //Instanciar nuestrar variables con nuestros componentes y sus ID's
         setContentView(R.layout.activity_register);
-        mAuth = FirebaseAuth.getInstance();
-        mfirestore = FirebaseFirestore.getInstance();
+
 
         ProgressBar progressBar;
 
@@ -99,57 +101,54 @@ public class Register extends AppCompatActivity {
                 facu = facultadUser.getText().toString().trim();
                 noTargett = noTarjeta.getText().toString().trim();
 
-                //Evitamos que esten vacios los campos
-                if (TextUtils.isEmpty(email)){
-                    Toast.makeText(Register.this,"Ingresa un correo", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if (TextUtils.isEmpty(password)){
-                    Toast.makeText(Register.this,"Ingresa una contraseña", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if (nameU.isEmpty() && expe.isEmpty() && facu.isEmpty() && noTargett.isEmpty()){
+                //Evitamos que esten vacios los campo
+                if (TextUtils.isEmpty(email) && TextUtils.isEmpty(password) && nameU.isEmpty() && expe.isEmpty() && facu.isEmpty() && noTargett.isEmpty()){
                     Toast.makeText(Register.this,"Llene todos los datos", Toast.LENGTH_SHORT).show();
                     return;
+                }else{
+                    //Si los datos estan llenos mandamos llamar la funcion de registro
+                    registerUser(email, password, nameU, expe, facu, noTargett);
                 }
 
+                //Mostramos la barra de progreso
+                progressBar.setVisibility(view.VISIBLE);
+                }
+        });
+    }
+
+    //--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    private void registerUser(String email, String password, String nameU, String expe, String facu, String noTargett) {
+        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                String id = mAuth.getCurrentUser().getUid();
                 Map<String, Object> map = new HashMap<>();
+                map.put("id", id);
                 map.put("nombre", nameU);
+                map.put("correo", email);
+                map.put("password", password);
                 map.put("expediente", expe);
                 map.put("facultad", facu);
                 map.put("tarjeta", noTargett);
 
-                mfirestore.collection("Users").add(map).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                mfirestore.collection("user").document(id).set(map).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Toast.makeText(Register.this,"Datos agregados", Toast.LENGTH_SHORT).show();
+                    public void onSuccess(Void unused) {
                         finish();
+                        startActivity(new Intent(Register.this, MainActivity.class));
+                        Toast.makeText(Register.this, "Usuario registrado", Toast.LENGTH_SHORT).show();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                       Toast.makeText(Register.this, "Error al guardar los datos", Toast.LENGTH_SHORT).show();
                     }
                 });
-
-                //Mostramos la barra de progreso
-                progressBar.setVisibility(view.VISIBLE);
-//--------------------------------------------------------------------------------------------------------------------------------------------------------------
-                //Mandamos los datos a la base de datos para poder iniciar sesion despues
-                mAuth.createUserWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                progressBar.setVisibility(view.GONE);
-                                if (task.isSuccessful()) {
-                                    //La cuenta se creo de manera correcta
-                                    Toast.makeText(Register.this, "Cuenta creada.",
-                                            Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(getApplicationContext(),Login.class);
-                                    startActivity(intent);
-                                    finish();
-                                } else {
-                                    //La cuenta no se creo de manera correcta.
-                                    Toast.makeText(Register.this, "Error en crear la cuenta.",
-                                            Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
 
             }
         });
