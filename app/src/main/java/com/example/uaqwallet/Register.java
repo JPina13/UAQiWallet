@@ -122,6 +122,7 @@ public class Register extends AppCompatActivity {
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
+                int pnutos = 0;
                 String id = mAuth.getCurrentUser().getUid();
                 Map<String, Object> map = new HashMap<>();
                 map.put("id", id);
@@ -131,6 +132,7 @@ public class Register extends AppCompatActivity {
                 map.put("expediente", expe);
                 map.put("facultad", facu);
                 map.put("tarjeta", noTargett);
+                map.put("puntos", pnutos);
 
                 mfirestore.collection("user").document(id).set(map).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override

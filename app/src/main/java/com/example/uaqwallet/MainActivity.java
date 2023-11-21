@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
     //Crear nuestras variables deacuerdo a los componentes que usamos
     FirebaseAuth auth;
-    Button button, adeudos;
+    Button button, adeudos, compras, canje;
     TextView textView, nameUser, facuUser, points;
     FirebaseUser user;
     FirebaseFirestore mfirestore;
@@ -36,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
         //Asignar a las variables los componentes con sus ID's
         auth = FirebaseAuth.getInstance();
         button = findViewById(R.id.logout);
+        adeudos = findViewById(R.id.adeudos);
+        compras = findViewById(R.id.btnCompras);
+        canje = findViewById(R.id.btnCanjes);
         adeudos = findViewById(R.id.adeudos);
         textView = findViewById(R.id.user_detall);
         nameUser = findViewById(R.id.textname);
@@ -82,5 +85,20 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        //Oyente de accion del boton adeudos
+        adeudos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Adeudos.class);//Llamamos a la activity de "Adeudos"
+                startActivity(intent);
+            }
+        });
+
+        //Oyente de accion para el boton de compras
+
+
+        //Oyente de accion para el boton de canje
+
     }
 }
