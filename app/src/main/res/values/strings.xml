@@ -55,4 +55,6 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+    <string name="textoCompra">Agrega tus compras para obtener puntos de ellas, puntos que podras cambiar con beneficios.</string>
+    <string name="txtPoints">Canjea tus puntos por recompensas dentro de la UAQ.</string>
 </resources>

@@ -96,9 +96,21 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //Oyente de accion para el boton de compras
-
+        compras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Compra.class);//Llamamos a la activity de "Adeudos"
+                startActivity(intent);
+            }
+        });
 
         //Oyente de accion para el boton de canje
-
+        canje.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Canje.class);//Llamamos a la activity de "Adeudos"
+                startActivity(intent);
+            }
+        });
     }
 }
