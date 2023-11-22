@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -56,19 +57,21 @@ public class MainActivity extends AppCompatActivity {
         }else{
             //Si lo esta obtenemos el correo del usuario ingresado en la base de datos
             textView.setText(user.getEmail());
+            String correoUsuario = user.getEmail();
 
             //Consultar la base de datos
-            collectionReference.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            collectionReference.whereEqualTo("correo", correoUsuario).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
                     if (task.isSuccessful()) {
                         for (QueryDocumentSnapshot document : task.getResult()) {
-                            String key = document.getId();
-                            nameUser.setText(document.getString("nombre"));
-                            facuUser.setText(document.getString("facultad"));
+                            // Obtener el nombre y la facultad del usuario específico
+                            nameUser.setText (document.getString("nombre"));
+                            facuUser.setText( document.getString("facultad"));
                         }
                     } else {
                         // Manejar errores
+                        Log.e("Firestore", "Error al obtener documentos", task.getException());
                     }
                 }
             });
