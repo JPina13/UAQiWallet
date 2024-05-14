@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="#FFFFFF"
     android:gravity="center"
     tools:context=".Adeudos">
 
@@ -17,11 +18,44 @@
             android:id="@+id/textExpli"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20sp"
             android:layout_marginLeft="20sp"
+            android:layout_marginTop="20sp"
             android:layout_marginRight="20sp"
-            android:textSize="17dp"
-            android:text="Adeudos del alumno dentro de la institución: Kardex, constancias y adeudos de biblioteca." />
+            android:text="Adeudos del alumno dentro de la institución: Kardex, constancias y adeudos de biblioteca."
+            android:textSize="17dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30sp"
+                android:backgroundTint="#3C3F41"
+                android:textColor="@color/white"
+                android:layout_marginLeft="20sp"
+                android:layout_marginRight="20sp"
+                android:text="@string/constancia_50" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20sp"
+                android:layout_marginRight="20sp"
+                android:layout_marginTop="30sp"
+                android:backgroundTint="#3C3F41"
+                android:textColor="@color/white"
+                android:text="@string/kardex_50" />
+        </LinearLayout>
+
 
     </LinearLayout>
 

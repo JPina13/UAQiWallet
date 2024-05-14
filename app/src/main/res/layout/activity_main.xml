@@ -37,39 +37,54 @@
         android:layout_width="match_parent"
         android:layout_height="45dp" />
 
-    <LinearLayout
+    <GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:columnCount="2"
+        android:rowCount="2"
+        android:alignmentMode="alignMargins"
+        android:columnOrderPreserved="false"
+        android:rowOrderPreserved="false">
+
+        <Button
+            android:id="@+id/biblio"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="Biblioteca"
+            android:textSize="14sp"
+            android:layout_margin="8dp" />
 
         <Button
             android:id="@+id/adeudos"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Adeudos" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_columnWeight="1"
+            android:text="Adeudos"
+            android:textSize="14sp"
+            android:layout_margin="8dp" />
 
         <Button
             android:id="@+id/btnCompras"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Compras" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_columnWeight="1"
+            android:text="Compras"
+            android:textSize="14sp"
+            android:layout_margin="8dp" />
 
         <Button
             android:id="@+id/btnCanjes"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Canjear" />
-    </LinearLayout>
+            android:layout_columnWeight="1"
+            android:text="Canjear"
+            android:textSize="14sp"
+            android:layout_margin="8dp" />
+
+    </GridLayout>
+
+
 
     <Space
         android:layout_width="match_parent"
